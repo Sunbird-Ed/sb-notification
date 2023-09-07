@@ -1,27 +1,99 @@
-# sb--notification
+# Sunbird
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+## @project-sunbird/sb-notification
 
-## Development server
+[![NPM version](https://img.shields.io/npm/v/@project-sunbird/sb-notification.svg?flat&logo=npm)](https://img.shields.io/npm/v/@project-sunbird/sb-notification.svg?style=for-the-badge&logo=npm)
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<p>
+  <img alt="angular" src="https://img.shields.io/badge/-Angular-DD0031?style=flat-square&logo=angular&logoColor=white" height=25 />
+  <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" height=25 />
+</p>
 
-## Code scaffolding
+`@project-sunbird/sb-notification` is a lightweight and very complete Angular library for notifications module in Sunbird.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
+## Getting started
+How to use @project-sunbird/sb-notification in your projects
 
-## Build
+## Using library locally
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Build library
+```console
+npm run build
+```
+2. Link library to your project
+```console
+npm link @project-sunbird/sb-notification
+```
 
-## Running unit tests
+## Table of contents
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Installation](#installation)
+- [Import in Angular](#import-in-angular)
+- [Options](#options)
+- [Versions](#versions)
+---
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+$ npm i @project-sunbird/sb-notification
+```
 
-## Further help
+### Import in Angular
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```console
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { SbNotificationModule } from '@project-sunbird/sb-notification';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    SbNotificationModule
+  ],
+  providers: [ ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
+```console
+<sb-notification tabindex="0" [notificationList]="notificationList" [inAppNotificationConfig]="inAppNotificationConfig" (showMore)="handleShowMore($event)" (showLess)="handleShowLess($event)"></sb-notification>
+```
+
+### Options
+
+  - `notificationList`: Array of notification objects.
+  - `inAppNotificationConfig`: Object of in-app notification configuration.
+
+      ```javascript
+        title: string;
+        subTitle: string;
+        clearText: string;
+        moreText: string;
+        lessText: string;
+        minNotificationViewCount: number;
+      ```
+  - `(showMore)`: Event emitted when user clicks on "Show more"
+  - `(showLess)`: Event emitted when user clicks on "Show less"
+
+### Versions 
+
+|   release branch  	| npm package version 	| Angular Version 	| Notes 	          |
+|:-----------------:	|:-------------------:	|:---------------:	|:---------------:
+|  release-5.1.0_v9 	|        5.0.2        	|      NG V9      	|                   |
+| release-5.1.0_v10 	|        5.0.3        	|      NG V10     	|                   |
+| release-5.1.0_v10 	|        5.0.4        	|      NG V10     	|                   |
+| release-5.1.0_v11 	|        5.0.5        	|      NG V11     	|                   |
+| release-5.1.0_v11 	|        5.0.7        	|      NG V11     	|                   |
+| release-5.1.0_v10 	|        5.0.8        	|      NG V10     	|                   |
+| release-5.1.0_v12 	|        5.0.9        	|      NG V12     	|                   |
+| release-5.1.0_v11 	|        5.0.11        	|      NG V11     	|                   |
+| release-5.1.0_v11 	|        5.0.12        	|      NG V11     	| build issues with NG11                  |
