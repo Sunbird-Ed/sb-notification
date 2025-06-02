@@ -30,6 +30,16 @@
             "tsConfig": "projects/notification/tsconfig.spec.json",
             "karmaConfig": "projects/notification/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/notification/**/*.ts",
+              "projects/notification/**/*.html"
+            ],
+            "eslintConfig": "projects/notification/eslint.config.js"
+          }
         }
       },
       "schematics": {
@@ -40,6 +50,9 @@
     }
   },
   "cli": {
-    "analytics": "58550947-f4de-47b2-86fc-a07b3bc00118"
+    "analytics": "58550947-f4de-47b2-86fc-a07b3bc00118",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
