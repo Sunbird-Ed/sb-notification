@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:14.17.3
+      - image: cimg/node:16.14
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
           name: Install project dependencies
           command: |
             if [ ! -d "node_modules" ]; then
-            npm i -f
+            npm i -f --ignore-engines
             fi
       - save_cache:
           key: node_modules_cache_{{ checksum "package-lock.json" }}
@@ -27,7 +27,7 @@ jobs:
             if [ -z $CIRCLE_PR_NUMBER ]; then
               npm run build && npm pack ./dist/notification
               echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-              npm publish ./dist/notification
+              npm publish --accesss=public ./dist/notification
             else
               npm run build && npm pack ./dist/notification
             fi  

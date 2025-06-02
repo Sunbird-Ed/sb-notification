@@ -1,27 +1,20 @@
-<div class="sb-notification-container" tabindex="0">
+<div class="sb-notification-container d-flex flex-dc" tabindex="0">
+  <div class="d-flex flex-ai-center flex-jc-space-between mb-8">
   <div class="sb-notification-header">
-    <div class="title" *ngIf="inAppNotificationConfig?.title">{{inAppNotificationConfig?.title}}</div>
-    <div class="sub-title" *ngIf="inAppNotificationConfig?.subTitle">{{inAppNotificationConfig?.subTitle}}</div>
+    <h4 class="mat-title mb-0 color-accent" *ngIf="inAppNotificationConfig?.title">{{inAppNotificationConfig?.title}}</h4>
+    <p class="mat-body-2 mb-0" *ngIf="inAppNotificationConfig?.subTitle">{{inAppNotificationConfig?.subTitle}} <a mat-button color="warn" (click)="clearAllNotifications($event)" *ngIf="inAppNotificationConfig.clearText" tabindex="0" class="ml-4" aria-hidden="false" role="link" tabindex="0">{{inAppNotificationConfig.clearText}}</a></p>
   </div>
-  <div class="clear-text" *ngIf="inAppNotificationConfig.clearText" tabindex="0">
-    <a (click)="clearAllNotifications($event)" aria-hidden="false" role="link" tabindex="0">{{inAppNotificationConfig.clearText}}</a>
-  </div>
+</div>
   <div class="sb-notification-list-items">
-    <div *ngFor="let notification of notificationList | slice:0:displayItemCount; let i=index" tabindex="0" >
-      <sb-notification-card 
-        [notification]="notification"
-        [hideDeleteOption]="hideDeleteOption"
-        (notificationClick)="notificationClickHandler($event)"
-        (deleteNotificationClick)="notificationDeleteHandler($event)">
-      </sb-notification-card>
-    </div>
+    <sb-notification-card *ngFor="let notification of notificationList | slice:0:displayItemCount; let i=index" tabindex="0" 
+    [notification]="notification"
+    [hideDeleteOption]="hideDeleteOption"
+    (notificationClick)="notificationClickHandler($event)"
+    (deleteNotificationClick)="notificationDeleteHandler($event)">
+  </sb-notification-card>
   </div>
   <ng-container *ngIf="inAppNotificationConfig?.minNotificationViewCount < this.notificationList?.length">
-    <div class="text-center more-text mt-16" *ngIf="displayItemCount < this.notificationList?.length" tabindex="0">
-      <a aria-hidden="false" (click)="onShowMore()">{{inAppNotificationConfig?.moreText}}</a>
-    </div>
-    <div class="text-center more-text mt-16" *ngIf="displayItemCount === this.notificationList?.length" tabindex="0">
-      <a aria-hidden="false" (click)="onShowLess()">{{inAppNotificationConfig?.lessText}}</a>
-    </div>
+    <a mat-button color="accent" aria-hidden="false" class="text-center" *ngIf="displayItemCount < this.notificationList?.length" tabindex="0" (click)="onShowMore()">{{inAppNotificationConfig?.moreText}}</a>
+    <a mat-button color="accent" aria-hidden="false" class="text-center" *ngIf="displayItemCount === this.notificationList?.length" tabindex="0" (click)="onShowLess()">{{inAppNotificationConfig?.lessText}}</a>
   </ng-container>
 </div>
