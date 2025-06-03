@@ -36,4 +36,4 @@ jobs:
           npm run build
           npm pack ./dist/notification
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          npm publish --accesss=public ./dist/notification
+          npm publish --access=public ./dist/notification
