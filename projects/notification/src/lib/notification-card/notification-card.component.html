@@ -1,8 +1,8 @@
 <mat-card class="mat-card-notification mb-8" (click)="notificationClickHandler($event)" tabindex="0">
   <mat-card-subtitle class="mat-caption mb-4"><span class="status" *ngIf="(notification?.status === NotificationStatus.UNREAD)"></span> {{notification?.createdOn | date:'E, d MMMM h:mm'}}</mat-card-subtitle>
   <mat-card-title class="mat-body-2 mb-0" *ngIf="notification?.action?.template?.data?.title" [ngClass]="{'active': notification?.status === NotificationStatus.UNREAD}">{{notification?.action?.template?.data?.title}}</mat-card-title>
-  <mat-card-content *ngIf="notification?.data?.actionData?.description">
-    <p>{{notification?.data?.actionData?.description}}</p>
+  <mat-card-content *ngIf="notification?.action?.template?.data?.description">
+    <p>{{notification?.action?.template?.data?.description}}</p>
   </mat-card-content>
   <mat-card-actions align="end" class="pt-0">
     <button mat-icon-button color="warn" aria-label="Delete" *ngIf="!hideDeleteOption" (click)="notificationDeleteHandler($event);$event.stopPropagation()">
